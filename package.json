@@ -1,0 +1,25 @@
+{
+  "name": "nintod-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tinnaphat \"Tin\" Somsang",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.9.0",
+    "fastify": "^3.27.2",
+    "knex": "^1.0.3",
+    "pg": "^8.7.3",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.19"
+  }
+}
