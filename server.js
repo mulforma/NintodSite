@@ -1,7 +1,15 @@
 // Import fastify
-import fastify, {FastifyRequest} from 'fastify';
+import fastify from 'fastify';
 // Import knex database
-import { database } from './database/database';
+import { database } from './database/database.js';
+// Import pointOfView
+import pointOfView from 'point-of-view';
+// Import fastify-static
+import fastifyStatic from 'fastify-static';
+// Import path
+import path from 'path';
+// Import ejs
+import ejs from 'ejs';
 // Define app
 const app = fastify();
 // Get port
@@ -13,10 +21,25 @@ app.listen(port, () => {
   console.log(`🎉 Access your website at http://localhost:${port}/`);
 });
 
+// Register public folder
+app.register(fastifyStatic, {
+  root: path.join(process.cwd(), 'public'),
+  prefix: '/public/',
+})
+
+// Register view engine
+app.register(pointOfView, {
+  engine: {
+    ejs: ejs,
+  },
+});
+
 // Get request at "/"
 app.get("/", (req, res) => {
-  // Redirect to "https://github.com/thevvx/Nintod"
-  res.redirect("https://github.com/thevvx/Nintod");
+  // Render view
+  res.view('/template/index.ejs', {
+    title: 'NINTOD | Home',
+  });
 });
 
 // Get request at "/api/v1/users"
@@ -31,7 +54,7 @@ app.get("/api/v1/users", (req, res) => {
 // Get request at "/api/v1/users/:id"
 app.get("/api/v1/users/:id", (req, res) => {
   // Get user from database
-  database("user").where("userId", (req.params as FastifyRequest).id).then(user => {
+  database("user").where("userId", req.params.id).then(user => {
     // Send user
     res.send(user);
   });
@@ -49,7 +72,7 @@ app.get("/api/v1/globalItems", (req, res) => {
 // Get request to "/api/v1/globalItems/:id"
 app.get("/api/v1/globalItems/:id", (req, res) => {
   // Get global item from database
-  database("globalItems").where("globalItemId", (req.params as FastifyRequest).id).then(globalItem => {
+  database("globalItems").where("globalItemId", req.params.id).then(globalItem => {
     // Send global item
     res.send(globalItem);
   });
@@ -71,4 +94,10 @@ app.get("/api/v1/jobs", (req, res) => {
     // Send jobs
     res.send(jobs);
   });
+});
+
+// Handle error
+app.get("*", (req, res) => {
+  // Render view
+  res.view("/template/_error.ejs", { statusCode: 404, message: "Page not found" });
 });
