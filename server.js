@@ -38,7 +38,23 @@ app.register(pointOfView, {
 app.get("/", (req, res) => {
   // Render view
   res.view('/template/index.ejs', {
-    title: 'NINTOD | Home',
+    title: 'The Nintod Project',
+  });
+});
+
+// Get request at "/about"
+app.get("/about", (req, res) => {
+  // Render view
+  res.view('/template/about.ejs', {
+    title: 'About',
+  });
+});
+
+// Get request at "/contact"
+app.get("/contact", (req, res) => {
+  // Render view
+  res.view('/template/contact.ejs', {
+    title: 'Contact',
   });
 });
 
@@ -99,5 +115,5 @@ app.get("/api/v1/jobs", (req, res) => {
 // Handle error
 app.get("*", (req, res) => {
   // Render view
-  res.view("/template/_error.ejs", { statusCode: 404, message: "Page not found" });
+  res.view("/template/_error.ejs", { title: "The Notfound Project", statusCode: 404, message: "Page not found" });
 });

@@ -1,30 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab:wght@400;900&family=Ubuntu&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
 
 * {
   padding: 0;
   margin: 0;
 }
 
-.font-bebas {
-  font-family: 'Bebas Neue', cursive;
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
 }
-
-.font-sarabun {
-  font-family: 'Sarabun', sans-serif;
+.font-ubuntu {
+  font-family: 'ubuntu', sans-serif;
+}
+.font-slabs {
+  font-family: 'Roboto Slab', serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  @apply dark:text-white text-black;
+  @apply text-white;
 }
 
 .btn-1 {
-  @apply px-4 py-2 dark:bg-white bg-black dark:text-black text-white text-sm font-sarabun rounded-lg dark:hover:bg-black hover:bg-white dark:hover:text-white hover:text-black hover:border dark:border-white border-black duration-200 font-bold w-full;
+  @apply px-4 py-2 bg-white text-gray-800 text-sm font-ubuntu rounded-lg hover:bg-gray-800 hover:text-white border border-white duration-200 font-bold w-full;
 }
 
 .btn-2 {
-  @apply px-4 py-2 font-sarabun rounded-lg w-full text-sm text-white bg-black border border-white hover:bg-white hover:text-black font-bold duration-200
+  @apply px-4 py-2 font-ubuntu rounded-lg w-full text-sm text-white bg-gray-800 border border-white hover:bg-white hover:text-gray-800 font-bold duration-200
 }
