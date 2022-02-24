@@ -63,6 +63,14 @@ app.get("/contact", (req, res) => {
   });
 });
 
+// Get request at "/license"
+app.get("/license", (req, res) => {
+  // Render view
+  res.view('/template/license.ejs', {
+    title: 'License',
+  });
+});
+
 // Get request at "/api/v1/users"
 app.get("/api/v1/users", (req, res) => {
   // Get users from database
