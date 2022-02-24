@@ -16,9 +16,14 @@ const app = fastify();
 const port = process.env.PORT || 3000;
 
 // Listen on port
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", (err, address) => {
+  // Handle error
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
   // Log port
-  console.log(`🎉 Access your website at http://localhost:${port}/`);
+  console.log(`🎉 Access your website at ${address}`);
 });
 
 // Register public folder

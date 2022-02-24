@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch"
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch",
+    "start": "node server.js"
   },
   "author": "Tinnaphat \"Tin\" Somsang",
   "license": "Apache-2.0",
